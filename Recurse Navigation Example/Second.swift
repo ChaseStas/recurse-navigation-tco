@@ -31,7 +31,7 @@ let Second: Reducer<SecondState, SecondAction, SecondEnvironment> =
             switch action {
             
             case let .first(.second(act)):
-                guard var st = state.first?.second else { break }
+                guard state.first?.second != nil else { break }
                 return self.run(&state.first!.second!, act, env)
                     .map{.first(.second($0))}
                 
